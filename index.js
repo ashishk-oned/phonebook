@@ -68,11 +68,13 @@ app.use(express.json());
 // app.use(unknownEndpoint);
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :postlog'));
 app.use(cors());
+app.use(express.static('dist'));
 
 //welcome page
 app.get('/', (request, response) => {
     console.log(phonebook.map(x=>x.id))
-    response.send('<h1>Hello World!</h1>');
+    // response.send('<h1>Hello World!</h1>');
+    response.sendFile('index.html');
   })
 ;
 //phonebook endpoint
